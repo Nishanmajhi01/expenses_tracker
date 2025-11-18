@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
+
 import 'app_router.dart';
 import 'theme.dart';
 import 'services/auth_service.dart';
 import 'services/firestore_service.dart';
 import 'providers/expenses_provider.dart';
+import 'providers/stats_provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -25,6 +27,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthService()),
         ChangeNotifierProvider(create: (_) => ExpensesProvider()),
+        ChangeNotifierProvider(create: (_) => StatsProvider()),  // << IMPORTANT
         Provider(create: (_) => FirestoreService()),
       ],
       child: MaterialApp(
